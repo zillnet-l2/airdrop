@@ -1,0 +1,6 @@
+pydantic
+merkle-zeppelin
+web3
+rtoml
+click
+orjson

@@ -1,0 +1,5 @@
+rpc='https://rpc.zillnet.io'
+from_block=
+to_block=
+amount=''
+total_token=''
