@@ -9,7 +9,7 @@ error StartInPast(); //635fce19
 error AlreadyClaimed(); //646cf558
 error InvalidProof(); //09bde339
 error NotInClaimWindow(); //eb65f0ed
-error NoWithdrawDuringClaim(); //ee56a2b0
+// error NoWithdrawDuringClaim(); //ee56a2b0
 
 contract Airdrop is Ownable {
     using SafeERC20 for IERC20;
@@ -83,11 +83,11 @@ contract Airdrop is Ownable {
         emit Claimed(index, msg.sender, amount);
     }
 
-    function withdraw() external onlyOwner {
-        if (block.timestamp < start + duration) revert NoWithdrawDuringClaim();
-        IERC20(token).safeTransfer(
-            msg.sender,
-            IERC20(token).balanceOf(address(this))
-        );
-    }
+    // function withdraw() external onlyOwner {
+    //     if (block.timestamp < start + duration) revert NoWithdrawDuringClaim();
+    //     IERC20(token).safeTransfer(
+    //         msg.sender,
+    //         IERC20(token).balanceOf(address(this))
+    //     );
+    // }
 }
