@@ -65,16 +65,16 @@ def dump(output_file):
     }
     if total_refund:
         tree=MerkleTree(
-            tuple((row['index'],row['address'],row['refund_int']) for row in airdrop),
+            tuple((item['index'],item['address'],item['refund_int']) for item in airdrop),
             ('uint256','address','uint256'),
         )
-        for row in airdrop:
-            row['refund_proofs']=tuple(
-                f'0x{proof.hex()}' for proof in tree.get_proofs((row['index'],row['address'],row['refund_int']))
+        for item in airdrop:
+            item['refund_proofs']=tuple(
+                f'0x{proof.hex()}' for proof in tree.get_proofs((item['index'],item['address'],item['refund_int']))
             )
         output['refund_proof_root']=f'0x{tree.root.hex()}'
-    for row in airdrop:
-        row.pop('refund_int')
+    for item in airdrop:
+        item.pop('refund_int')
     output['airdrop']=airdrop
     with open(output_file,'w+') as f:
         f.write(orjson.dumps(output).decode())
