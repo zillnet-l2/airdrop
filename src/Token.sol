@@ -7,19 +7,19 @@ import {ERC20Permit} from "@openzeppelin/contracts/token/ERC20/extensions/ERC20P
 
 contract Token is ERC20, ERC165, ERC20Permit {
 
-    uint8 private _decimals;
+    uint8 private immutable DECIMALS;
 
     constructor(
-        string memory name,
-        string memory symbol,
-        uint256 supply,
-        uint8 dec
-    ) ERC20(name, symbol) ERC20Permit(name) {
-        _decimals=dec;
-        _mint(msg.sender, supply);
+        string memory _name,
+        string memory _symbol,
+        uint256 _supply,
+        uint8 _decimals
+    ) ERC20(_name, _symbol) ERC20Permit(_name) {
+        DECIMALS=_decimals;
+        _mint(msg.sender, _supply);
     }
 
     function decimals() public view virtual override returns (uint8) {
-        return _decimals;
+        return DECIMALS;
     }
 }
