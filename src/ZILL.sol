@@ -2,12 +2,13 @@
 pragma solidity ^0.8.25;
 
 import {ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import {ERC165} from "@openzeppelin/contracts/utils/introspection/ERC165.sol";
 import {ERC20Permit} from "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol";
 import {ERC20Burnable} from "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
 import {ERC20Pausable} from "@openzeppelin/contracts/token/ERC20/extensions/ERC20Pausable.sol";
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 
-contract ZILL is ERC20, ERC20Permit, ERC20Burnable, ERC20Pausable, Ownable {
+contract ZILL is ERC20, ERC165, ERC20Permit, ERC20Burnable, ERC20Pausable, Ownable {
     constructor(
         address _owner
     ) ERC20("ZILL", "ZILL") ERC20Permit("ZILL") Ownable(_owner) {
