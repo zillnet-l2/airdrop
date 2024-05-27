@@ -12,7 +12,7 @@ contract ZILL is ERC20, ERC165, ERC20Permit, ERC20Burnable, ERC20Pausable, Ownab
     constructor(
         address _owner
     ) ERC20("ZILL", "ZILL") ERC20Permit("ZILL") Ownable(_owner) {
-        _mint(msg.sender, 1500000000 ether);
+        _mint(msg.sender, 10000000000 ether);
     }
 
     function _update(

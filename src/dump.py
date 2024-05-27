@@ -24,9 +24,9 @@ def dump(output_file):
             # print(number)
             for tx in block.transactions:
                 receipt=w3.eth.get_transaction_receipt(tx)
-                if not receipt.status or not receipt.effectiveGasPrice:
+                if not receipt.effectiveGasPrice:
                     continue
-                fee=receipt.gasUsed*receipt.effectiveGasPrice
+                fee=receipt.gasUsed*receipt.effectiveGasPrice+receipt.l1Fee
                 if receipt['from'] in participants:
                     participants[receipt['from']]+=fee
                 else:
